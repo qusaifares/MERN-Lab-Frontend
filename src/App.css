@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+a {
+  color: inherit;
+}
+
 #root {
   display: grid;
   grid-template-areas: 'header header' 'aside main';
@@ -38,8 +42,77 @@ main {
   height: 100%;
 }
 
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: -20px;
+}
+
+.contact-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #abe3ff;
+  background: linear-gradient(#fff, #abe3ff);
+  padding-bottom: 15px;
+}
+
+.actions img {
+  height: 25px;
+  margin: 10px;
+}
+
 .headshot {
-  width: 100px;
+  width: 120px;
   border-radius: 50%;
   border: 1px solid grey;
+}
+
+.name {
+  font-size: 40px;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.icon {
+  height: 30px;
+  margin-right: 15px;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-areas:
+    'phone note'
+    'address note'
+    'email .';
+  height: 300px;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.info-box {
+  font-size: 1.2rem;
+  display: flex;
+  width: fit-content;
+}
+
+.phone {
+  grid-area: phone;
+}
+
+.address {
+  grid-area: address;
+}
+
+.email {
+  grid-area: email;
+}
+
+.note {
+  grid-area: note;
 }

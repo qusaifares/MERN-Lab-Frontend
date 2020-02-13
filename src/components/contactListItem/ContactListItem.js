@@ -9,7 +9,7 @@ class ContactListItem extends Component {
   render() {
     return (
       <Link to={`/contacts/${this.props.contact._id}`}>
-        <div className="name">{this.props.contact.name}</div>
+        <div className="card-name">{this.props.contact.name}</div>
       </Link>
     );
   }

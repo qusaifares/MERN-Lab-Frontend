@@ -24,6 +24,8 @@ header {
   border-bottom: 1px solid #d2d2d2;
   height: 100%;
   line-height: 80px;
+  background: #55bff4;
+  color: white;
 }
 
 aside,
@@ -35,6 +37,10 @@ aside {
   grid-area: aside;
   border-right: 1px solid #d2d2d2;
   height: 100%;
+}
+
+.new-icon {
+  height: 25px;
 }
 
 main {
@@ -55,14 +61,14 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #abe3ff;
-  background: linear-gradient(#fff, #abe3ff);
+  background: linear-gradient(#bfe8fc, #abe3ff);
   padding-bottom: 15px;
 }
 
 .actions img {
   height: 25px;
   margin: 10px;
+  cursor: pointer;
 }
 
 .headshot {
@@ -115,4 +121,41 @@ main {
 
 .note {
   grid-area: note;
+}
+
+/* Hold on */
+
+.contact-list {
+  height: calc(100vh - 118px);
+  overflow-y: scroll;
+}
+
+.list-item {
+  align-items: center;
+  color: var(--black);
+  cursor: pointer;
+  display: flex;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
+}
+
+.list-item:hover {
+  background: #e5f8ff;
+  color: #0099cc;
+}
+
+.list-item:hover::after {
+  border-bottom: 0.5rem solid transparent;
+  border-left: 0.5rem solid #0099cc;
+  border-top: 0.5rem solid transparent;
+  content: '';
+  position: absolute;
+  right: 1rem;
+}
+
+.list-image {
+  border-radius: 50%;
+  height: 3rem;
+  margin-right: 0.5rem;
 }

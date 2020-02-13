@@ -8,8 +8,16 @@ class ContactListItem extends Component {
   }
   render() {
     return (
-      <Link to={`/contacts/${this.props.contact._id}`}>
-        <div className="card-name">{this.props.contact.name}</div>
+      <Link className="list-item" to={`/contacts/${this.props.contact._id}`}>
+        <img
+          className="list-image"
+          src={
+            this.props.contact.imageUrl ||
+            `${process.env.PUBLIC_URL}/images/default-headshot.png`
+          }
+          alt={this.props.contact.name}
+        />
+        {this.props.contact.name}
       </Link>
     );
   }

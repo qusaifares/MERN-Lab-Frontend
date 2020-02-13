@@ -5,6 +5,8 @@ import Header from './components/header/Header';
 import Sidebar from './components/sidebar/Sidebar';
 import Contact from './components/contact/Contact';
 import Edit from './components/edit/Edit';
+import New from './components/new/New';
+import Home from './components/home/Home';
 
 class App extends Component {
   constructor() {
@@ -31,6 +33,7 @@ class App extends Component {
         </aside>
         <main>
           <Switch>
+            <Route exact path="/" component={Home} />
             {this.state.contacts.map(contact => (
               <Route
                 path={`/contacts/${contact._id}`}
@@ -47,7 +50,11 @@ class App extends Component {
                 key={contact._id}
                 exact
                 render={routerProps => (
-                  <Edit match={routerProps.match} id={contact._id} />
+                  <Edit
+                    match={routerProps.match}
+                    id={contact._id}
+                    history={this.props.history}
+                  />
                 )}
               />
             ))}
@@ -62,6 +69,7 @@ class App extends Component {
                 )}
               />
             ))}
+            <Route path="/new" component={New} />
           </Switch>
         </main>
       </>

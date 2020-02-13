@@ -15,6 +15,16 @@ class Contact extends Component {
         this.setState({ contact });
       });
   }
+  handleDelete = () => {
+    fetch(
+      `https://mern-lab-backend.herokuapp.com/contacts/delete/${this.props.id}`,
+      {
+        method: 'DELETE'
+      }
+    )
+      .then(res => res.json())
+      .then(data => (window.location.href = '/'));
+  };
   render() {
     return (
       <div className="contact">
@@ -24,14 +34,15 @@ class Contact extends Component {
             <img
               src={`${process.env.PUBLIC_URL}/images/edit.svg`}
               alt="Edit"
+              className="action-icon"
             />{' '}
           </Link>
-          <Link to={`/contacts/delete/${this.state.contact._id}`}>
-            <img
-              src={`${process.env.PUBLIC_URL}/images/delete.svg`}
-              alt="Delete"
-            />
-          </Link>
+          <img
+            src={`${process.env.PUBLIC_URL}/images/delete.svg`}
+            alt="Delete"
+            className="action-icon"
+            onClick={this.handleDelete}
+          />
         </div>
         <div className="contact-header">
           <img
@@ -55,20 +66,17 @@ class Contact extends Component {
             {this.state.contact.phone}
           </div>
 
-          {this.state.contact.address && (
-            <div className="address info-box">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/map.svg`}
-                className="icon"
-                alt="Address"
-              />
-              {this.state.contact.address.street}
-              <br />
-              {this.state.contact.address.city},{' '}
-              {this.state.contact.address.state},{' '}
-              {this.state.contact.address.zipcode}
-            </div>
-          )}
+          <div className="address info-box">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/map.svg`}
+              className="icon"
+              alt="Address"
+            />
+            {this.state.contact.street}
+            <br />
+            {this.state.contact.city}, {this.state.contact.state},{' '}
+            {this.state.contact.zipcode}
+          </div>
 
           <a
             href={`mailto:${this.state.contact.email}`}
@@ -84,16 +92,14 @@ class Contact extends Component {
             {this.state.contact.email}
           </a>
 
-          {this.state.contact.note && (
-            <div className="note info-box">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/note.svg`}
-                className="icon"
-                alt="Note"
-              />
-              {this.state.contact.note}
-            </div>
-          )}
+          <div className="note info-box">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/note.svg`}
+              className="icon"
+              alt="Note"
+            />
+            {this.state.contact.note}
+          </div>
         </div>
       </div>
     );

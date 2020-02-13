@@ -1,24 +1,35 @@
 [
   {
     "name": "Qusai Fares",
-    "phone": 3207580384,
+    "title": "Software Engineer",
+    "phone": "3207580384",
     "email": "qusai@fares.com",
-    "address": {
-      "street": "123 Soccer Ave",
-      "city": "Pleasantville",
-      "state": "NC",
-      "zip": 29651
-    }
+    "street": "123 Soccer Ave",
+    "city": "Pleasantville",
+    "state": "NC",
+    "zipcode": "29651",
+    "note": "wow"
   },
   {
     "name": "Chris Albanese",
-    "phone": 3849510077,
+    "title": "Software Engineer",
+    "phone": "3849510077",
     "email": "chris@albanese.com",
-    "address": {
-      "street": "123 Easy St",
-      "city": "Glens Falls",
-      "state": "NY",
-      "zip": 11211
-    }
+    "street": "123 Easy St",
+    "city": "Glens Falls",
+    "state": "NY",
+    "zipcode": "11211",
+    "note": "omg"
+  },
+  {
+    "name": "Dan Dan",
+    "title": "Software Engineer",
+    "phone": "3842310012",
+    "email": "d@n.com",
+    "street": "32 Easy St",
+    "city": "eew Falls",
+    "state": "FL",
+    "zipcode": "12311",
+    "note": "OMG"
   }
 ]

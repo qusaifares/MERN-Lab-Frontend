@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from './components/header/Header';
 import Sidebar from './components/sidebar/Sidebar';
 import Contact from './components/contact/Contact';
+import Edit from './components/edit/Edit';
 
 class App extends Component {
   constructor() {
@@ -33,6 +34,27 @@ class App extends Component {
             {this.state.contacts.map(contact => (
               <Route
                 path={`/contacts/${contact._id}`}
+                key={contact._id}
+                exact
+                render={routerProps => (
+                  <Contact match={routerProps.match} id={contact._id} />
+                )}
+              />
+            ))}
+            {this.state.contacts.map(contact => (
+              <Route
+                path={`/contacts/update/${contact._id}`}
+                key={contact._id}
+                exact
+                render={routerProps => (
+                  <Edit match={routerProps.match} id={contact._id} />
+                )}
+              />
+            ))}
+
+            {this.state.contacts.map(contact => (
+              <Route
+                path={`/contacts/delete/${contact._id}`}
                 key={contact._id}
                 exact
                 render={routerProps => (

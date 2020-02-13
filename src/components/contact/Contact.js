@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Contact extends Component {
   constructor(props) {
@@ -18,11 +19,19 @@ class Contact extends Component {
     return (
       <div className="contact">
         <div className="actions">
-          <img src={`${process.env.PUBLIC_URL}/images/edit.svg`} alt="Edit" />
-          <img
-            src={`${process.env.PUBLIC_URL}/images/delete.svg`}
-            alt="Delete"
-          />
+          <Link to={`/contacts/update/${this.state.contact._id}`}>
+            {' '}
+            <img
+              src={`${process.env.PUBLIC_URL}/images/edit.svg`}
+              alt="Edit"
+            />{' '}
+          </Link>
+          <Link to={`/contacts/delete/${this.state.contact._id}`}>
+            <img
+              src={`${process.env.PUBLIC_URL}/images/delete.svg`}
+              alt="Delete"
+            />
+          </Link>
         </div>
         <div className="contact-header">
           <img

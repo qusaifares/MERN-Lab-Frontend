@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
 
 class Edit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contact: {}
+    };
+  }
+  componentDidMount() {
+    fetch(`https://mern-lab-backend.herokuapp.com/contacts/${this.props.id}`)
+      .then(res => res.json())
+      .then(contact => {
+        this.setState({ contact });
+      });
+  }
   render() {
     return (
       <div>
-        <div className="contact-info">
+        <form method="put" className="contact-edit">
           <div className="phone info-box">
             <img
               src={`${process.env.PUBLIC_URL}/images/phone.svg`}
               className="icon"
               alt="Phone"
             />
-            <input type="text" value={this.state.contact.phone} />
+            <input type="text" value={this.state.contact.phone} name="phone" />
           </div>
           {this.state.contact.address && (
             <div className="address info-box">
@@ -20,26 +33,35 @@ class Edit extends Component {
                 className="icon"
                 alt="Address"
               />
-              {this.state.contact.address.street}
-              <br />
-              {this.state.contact.address.city},{' '}
-              {this.state.contact.address.state},{' '}
-              {this.state.contact.address.zipcode}
+              <input
+                type="text"
+                value={this.state.contact.address.street}
+                name="street"
+              />
+              <input
+                type="text"
+                value={this.state.contact.address.city}
+                name="city"
+              />
+              <input
+                type="text"
+                value={this.state.contact.address.state}
+                name="state"
+              />
+              <input
+                type="text"
+                value={this.state.contact.address.zipcode}
+                name="zipcode"
+              />
             </div>
           )}
-          <a
-            href={`mailto:${this.state.contact.email}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="email info-box"
-          >
-            <img
-              src={`${process.env.PUBLIC_URL}/images/email.svg`}
-              className="icon"
-              alt="Email"
-            />
-            <input type="text" value={this.state.contact.email} />
-          </a>
+
+          <img
+            src={`${process.env.PUBLIC_URL}/images/email.svg`}
+            className="icon"
+            alt="Email"
+          />
+          <input type="text" value={this.state.contact.email} name="email" />
 
           <div className="note info-box">
             <img
@@ -47,9 +69,10 @@ class Edit extends Component {
               className="icon"
               alt="Note"
             />
-            <input type="text" value={this.state.contact.note} />
+            <input type="text" value={this.state.contact.note} name="note" />
           </div>
-        </div>
+          <button type="submit">Update</button>
+        </form>
       </div>
     );
   }

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Qusai Fares",
+    "phone": 3207580384,
+    "email": "qusai@fares.com",
+    "address": {
+      "street": "123 Soccer Ave",
+      "city": "Pleasantville",
+      "state": "NC",
+      "zip": 29651
+    }
+  },
+  {
+    "name": "Chris Albanese",
+    "phone": 3849510077,
+    "email": "chris@albanese.com",
+    "address": {
+      "street": "123 Easy St",
+      "city": "Glens Falls",
+      "state": "NY",
+      "zip": 11211
+    }
+  }
+]

@@ -4,17 +4,42 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contact: {}
+      contact: {},
+      name: '',
+      street: '',
+      city: '',
+      state: '',
+      zipcode: '',
+      email: '',
+      note: '',
+      phone: ''
     };
   }
   componentDidMount() {
     fetch(`https://mern-lab-backend.herokuapp.com/contacts/${this.props.id}`)
       .then(res => res.json())
       .then(contact => {
-        this.setState({ contact });
+        this.setState({
+          contact,
+          name: contact.name,
+          street: contact.address.street,
+          city: contact.address.city,
+          state: contact.address.state,
+          zipcode: contact.address.zipcode,
+          note: contact.note,
+          phone: contact.phone,
+          email: contact.email
+        });
       });
   }
+
+  handleChange = evt => {
+    // this.setState({ [evt.target.name]: evt.target.value });
+    console.log('hello');
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div>
         <form method="put" className="contact-edit">
@@ -24,7 +49,12 @@ class Edit extends Component {
               className="icon"
               alt="Phone"
             />
-            <input type="text" value={this.state.contact.phone} name="phone" />
+            <input
+              type="text"
+              defaultValue={this.state.phone}
+              name="phone"
+              onChange={this.handleChange}
+            />
           </div>
           {this.state.contact.address && (
             <div className="address info-box">
@@ -35,23 +65,27 @@ class Edit extends Component {
               />
               <input
                 type="text"
-                value={this.state.contact.address.street}
+                defaultValue={this.state.street}
                 name="street"
+                onChange={this.handleChange}
               />
               <input
                 type="text"
-                value={this.state.contact.address.city}
+                defaultValue={this.state.city}
                 name="city"
+                onChange={this.handleChange}
               />
               <input
                 type="text"
-                value={this.state.contact.address.state}
+                defaultValue={this.state.state}
                 name="state"
+                onChange={this.handleChange}
               />
               <input
                 type="text"
-                value={this.state.contact.address.zipcode}
+                defaultValue={this.state.zipcode}
                 name="zipcode"
+                onChange={this.handleChange}
               />
             </div>
           )}
@@ -61,7 +95,12 @@ class Edit extends Component {
             className="icon"
             alt="Email"
           />
-          <input type="text" value={this.state.contact.email} name="email" />
+          <input
+            type="text"
+            defaultValue={this.state.email}
+            name="email"
+            onChange={this.handleChange}
+          />
 
           <div className="note info-box">
             <img
@@ -69,7 +108,12 @@ class Edit extends Component {
               className="icon"
               alt="Note"
             />
-            <input type="text" value={this.state.contact.note} name="note" />
+            <input
+              type="text"
+              defaultValue={this.state.note}
+              name="note"
+              onChange={this.handleChange}
+            />
           </div>
           <button type="submit">Update</button>
         </form>
